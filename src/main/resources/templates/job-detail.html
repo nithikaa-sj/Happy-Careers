@@ -1,6 +1,7 @@
 <!-- src/main/resources/templates/job-detail.html -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+	<th:block th:replace="fragments/header :: *"></th:block>
 <head>
     <meta charset="UTF-8">
     <title>Job Details</title>
@@ -20,4 +21,6 @@
 <a href="/" style="text-decoration: none;">← Back to Jobs</a>
 
 </body>
+<th:block th:replace="fragments/footer :: *"></th:block>
+
 </html>

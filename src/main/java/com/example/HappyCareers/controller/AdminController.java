@@ -76,7 +76,7 @@ public class AdminController {
             List<Application> applications = applicationRepository.findByJobId(job.getId());
             jobApplications.put(job, applications);
         }
-
+ 
         model.addAttribute("jobApplications", jobApplications);
         return "applications";
     }

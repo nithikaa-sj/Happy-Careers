@@ -28,3 +28,84 @@ main {
     text-decoration: none;
     border-radius: 5px;
 }
+
+main {
+    padding: 2rem;
+}
+
+.search-section {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.search-form input,
+.search-form select,
+.search-form button {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.quick-filters form {
+    display: inline-block;
+    margin: 0.25rem;
+}
+
+.quick-filters button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+}
+
+.jobs-section h2 {
+    margin-bottom: 1rem;
+}
+
+.job-list {
+    list-style: none;
+    padding: 0;
+}
+
+.job-card {
+    background: #ffffff;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.view-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.view-link:hover {
+    text-decoration: underline;
+}
+
+.success-msg {
+    color: green;
+    margin-top: 1rem;
+}
+
+.pagination {
+    margin-top: 2rem;
+}
+
+.pagination a {
+    margin: 0 5px;
+    text-decoration: none;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.pagination a.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
