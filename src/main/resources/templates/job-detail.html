@@ -1,0 +1,23 @@
+<!-- src/main/resources/templates/job-detail.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Details</title>
+</head>
+<body>
+
+<h1 th:text="${job.title}">Job Title</h1>
+
+<p><strong>Description:</strong> <span th:text="${job.description}">Job description goes here.</span></p>
+<p><strong>Location:</strong> <span th:text="${job.location}">City</span></p>
+<p><strong>Salary:</strong> ₹<span th:text="${job.salary}">0</span></p>
+<p><strong>Posted Date:</strong><span th:text="${#temporals.format(job.postedDate, 'dd MMM yyyy')}"></span></p>
+
+<a th:href="@{'/job/' + ${job.id} + '/apply'}" class="btn btn-primary">Apply</a>
+
+
+<a href="/" style="text-decoration: none;">← Back to Jobs</a>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head('Job Listings')"></head>
+<body>
+	<form action="/search" method="get">
+	    <input type="text" name="keyword" placeholder="Search jobs..." />
+	    <select name="location">
+	        <option value="">All Locations</option>
+	        <option value="Chennai">Chennai</option>
+	        <option value="Bangalore">Bangalore</option>
+	        <!-- Add more as needed -->
+	    </select>
+	    <button type="submit">Search</button>
+	</form>
+	
+	
+	<form method="get" action="/jobs/today">
+	    <button type="submit">Posted Today</button>
+	</form>
+
+	<form method="get" action="/jobs/recent">
+	    <button type="submit">Posted in Last 7 Days</button>
+	</form>
+
+	<form method="get" action="/jobs/sort/date/newest">
+	    <button type="submit">Newest First</button>
+	</form>
+
+	<form method="get" action="/jobs/sort/date/oldest">
+	    <button type="submit">Oldest First</button>
+	</form>
+	
+	
+	<form action="/" method="get" style="margin-bottom: 20px;">
+
+	    <!-- Keyword search -->
+	    <input type="text" name="keyword" placeholder="Search job title or description" />
+
+	    <!-- Location dropdown -->
+	    <select name="location">
+	        <option value="">All Locations</option>
+	        <option value="Chennai">Chennai</option>
+	        <option value="Bangalore">Bangalore</option>
+	        <option value="Hyderabad">Hyderabad</option>
+	        <option value="Remote">Remote</option>
+	    </select>
+
+	    <!-- Sort options -->
+	    <select name="sortBy">
+	        <option value="">-- Sort By --</option>
+	        <option value="salaryHigh">Salary: High to Low</option>
+	        <option value="salaryLow">Salary: Low to High</option>
+	        <option value="newest">Posted Date: Newest First</option>
+	        <option value="oldest">Posted Date: Oldest First</option>
+	    </select>
+
+	    <button type="submit">Search Jobs</button>
+	</form>
+
+
+
+
+
+<div th:replace="fragments :: navbar"></div>
+
+<main>
+    <h2>Available Job Opportunities</h2>
+    <div th:if="${jobs.isEmpty()}">
+        <p>No jobs available at the moment.</p>
+    </div>
+    <ul>
+        <li th:each="job : ${jobs}">
+            <h3 th:text="${job.title}">Job Title</h3>
+            <p><strong>Company:</strong> <span th:text="${job.company}"></span></p>
+            <p><strong>Location:</strong> <span th:text="${job.location}"></span></p>
+            <a th:href="@{/job/{id}(id=${job.id})}">View Details & Apply</a>
+        </li>
+        <hr/>
+    </ul>
+	<p th:if="${message}" th:text="${message}" style="color: green;"></p>
+	
+	
+	<div th:if="${totalPages > 1}" class="pagination">
+	    <div th:if="${currentPage > 0}">
+	        <a th:href="@{/?(page=${currentPage - 1}, keyword=${keyword}, location=${location})}">Previous</a>
+	    </div>
+
+	    <div th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+	        <a th:href="@{/?(page=${i}, keyword=${keyword}, location=${location})}"
+	           th:text="${i + 1}"
+	           th:classappend="${i == currentPage} ? 'active' : ''"></a>
+	    </div>
+
+	    <div th:if="${currentPage < totalPages - 1}">
+	        <a th:href="@{/?(page=${currentPage + 1}, keyword=${keyword}, location=${location})}">Next</a>
+	    </div>
+	</div>
+
+
+</main>
+
+<div th:replace="fragments :: footer"></div>
+
+</body>
+</html>

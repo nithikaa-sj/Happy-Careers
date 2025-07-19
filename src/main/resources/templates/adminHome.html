@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+</head> 
+<body>
+    <h2>Admin Dashboard</h2>
+    <p>Total Jobs Posted: <strong th:text="${totalJobs}"></strong></p>
+	<table>
+	    <thead>
+	        <tr>
+	           <th>Title</th>
+	           <th>Posted Date</th>
+	           <th>Actions</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr th:each="job, iterStat : ${recentJobs}">
+	            <td th:text="${job.title}">Job Title</td>
+	            <td th:text="${formattedDates[iterStat.index]}">Date</td>
+	            <td>
+					    <a th:href="@{'/admin/editJob/' + ${job.id}}">Edit</a> |
+					    <form th:action="@{'/admin/deleteJob/' + ${job.id}}" method="post" style="display:inline;">
+					        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+					        <button type="submit">Delete</button>
+					    </form>
+				</td>
+	        </tr>
+	    </tbody>
+ </table>
+
+
+
+
+    <a href="/admin/postJob">Post New Job</a> |
+
+    <form action="/logout" method="post" style="display:inline;">
+	    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+	    <button type="submit">Logout</button>
+	</form>
+
+
+	
+	<a href="/admin/applications">📄 View Applications</a>
+	
+	<p th:if="${message}" style="color:green;" th:text="${message}"></p>
+	<p th:if="${error}" style="color:red;" th:text="${error}"></p>
+
+
+ </body>
+</html>

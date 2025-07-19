@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Apply for Job</title>
+</head>
+<body>
+<h1>Apply for Job ID: <span th:text="${jobId}"></span></h1>
+
+<form th:action="@{/job/{id}/apply(id=${jobId})}" 
+      method="post" 
+      th:object="${application}" 
+      enctype="multipart/form-data">
+
+    <label>Name:</label><br/>
+    <input type="text" th:field="*{name}" required/><br/><br/>
+
+    <label>Email:</label><br/>
+    <input type="email" th:field="*{email}" required/><br/><br/>
+
+    <label>Upload Resume (PDF/DOCX):</label><br/>
+    <input type="file" name="resumeFile" accept=".pdf,.doc,.docx" required/><br/><br/>
+
+    <!-- hCaptcha -->
+    <div class="h-captcha" data-sitekey="91ca0b26-681c-46c0-beaa-49d8075e1238"></div><br/>
+
+    <button type="submit">Submit</button>
+
+    <p th:if="${error}" th:text="${error}" style="color: red;"></p>
+</form>
+
+<script src="https://hcaptcha.com/1/api.js" async defer></script>
+
+<a th:href="@{/jobs}">← Back to Jobs</a>
+</body>
+</html>

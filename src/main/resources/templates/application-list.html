@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Submitted Applications</title>
+</head>
+<body>
+    <h2>All Submitted Applications</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Job ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Resume URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="app : ${applications}">
+                <td th:text="${app.jobId}">Job ID</td>
+                <td th:text="${app.name}">Name</td>
+                <td th:text="${app.email}">Email</td>
+                <td>
+                    <a th:href="${app.resumeUrl}" target="_blank">View Resume</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/" style="margin-top: 20px;">Back to Home</a>
+	
+	<form th:action="@{/logout}" method="post">
+	        <button type="submit">Logout</button>
+	</form>
+</body>
+</html>
