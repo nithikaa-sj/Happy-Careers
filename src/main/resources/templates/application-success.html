@@ -2,34 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Application Submitted</title>
-    <style>
-        body {
-            font-family: Arial;
-            text-align: center;
-            margin-top: 100px;
-            background-color: #f0f8ff;
-        }
-        h1 {
-            color: green;
-        }
-        a.button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-        a.button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
-    <h1>🎉 Congratulations!</h1>
-    <p>Your job application has been successfully submitted.</p>
-    
-    <a href="/" class="button">🔙 Back to Job Listings</a>
+    <div class="container center-content">
+        <h1 class="success-heading">🎉 Congratulations!</h1>
+        <p>Your job application has been successfully submitted.</p>
+
+        <a href="/" class="btn primary-btn">🔙 Back to Job Listings</a>
+    </div>
 </body>
 </html>

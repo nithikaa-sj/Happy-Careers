@@ -2,33 +2,42 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Applications by Job</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
-    <h1>Applications by Job</h1>
-    <a href="/admin/home">⬅ Back to Dashboard</a>
-    <hr/>
+    <div class="container">
+        <header class="dashboard-header">
+            <h1>Applications by Job</h1>
+            <a href="/admin/home" class="back-link">⬅ Back to Dashboard</a>
+        </header>
+        <hr/>
 
-    <div th:each="entry : ${jobApplications}">
-        <h2 th:text="${entry.key.title}">Job Title</h2>
-        <table border="1" cellpadding="8">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Resume</th>
-                    <th>Applied On</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="app : ${entry.value}">
-                    <td th:text="${app.name}">Name</td>
-                    <td th:text="${app.email}">Email</td>
-                    <td><a th:href="${app.resumeUrl}" target="_blank">View Resume</a></td>
-                    <td th:text="${#temporals.format(app.createdAt, 'dd MMM yyyy HH:mm')}">Date</td>
-                </tr>
-            </tbody>
-        </table>
-        <br/>
+        <div th:each="entry : ${jobApplications}" class="job-applications-group">
+            <h2 th:text="${entry.key.title}" class="job-title">Job Title</h2>
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Resume</th>
+                        <th>Applied On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="app : ${entry.value}">
+                        <td th:text="${app.name}">Name</td>
+                        <td th:text="${app.email}">Email</td>
+                        <td>
+							<a th:href="@{'/resume/' + ${application.resumeFileName}}" target="_blank">View Resume</a>
+
+                        </td>
+                        <td th:text="${#temporals.format(app.createdAt, 'dd MMM yyyy HH:mm')}">Date</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>
+

@@ -2,34 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Apply for Job</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
 </head>
 <body>
-<h1>Apply for Job ID: <span th:text="${jobId}"></span></h1>
+    <div class="container">
+        <h1>Apply for Job ID: <span th:text="${jobId}"></span></h1>
 
-<form th:action="@{/job/{id}/apply(id=${jobId})}" 
-      method="post" 
-      th:object="${application}" 
-      enctype="multipart/form-data">
+        <form th:action="@{/job/{id}/apply(id=${jobId})}" 
+              method="post" 
+              th:object="${application}" 
+              enctype="multipart/form-data"
+              class="job-form">
 
-    <label>Name:</label><br/>
-    <input type="text" th:field="*{name}" required/><br/><br/>
+            <label>Name</label>
+            <input type="text" th:field="*{name}" required/>
 
-    <label>Email:</label><br/>
-    <input type="email" th:field="*{email}" required/><br/><br/>
+            <label>Email</label>
+            <input type="email" th:field="*{email}" required/>
 
-    <label>Upload Resume (PDF/DOCX):</label><br/>
-    <input type="file" name="resumeFile" accept=".pdf,.doc,.docx" required/><br/><br/>
+            <label>Upload Resume (PDF/DOCX)</label>
+            <input type="file" name="resumeFile" accept=".pdf,.doc,.docx" required/>
 
-    <!-- hCaptcha -->
-    <div class="h-captcha" data-sitekey="91ca0b26-681c-46c0-beaa-49d8075e1238"></div><br/>
+            <div class="captcha-box">
+                <div class="h-captcha" data-sitekey="91ca0b26-681c-46c0-beaa-49d8075e1238"></div>
+            </div>
 
-    <button type="submit">Submit</button>
+            <button type="submit" class="btn primary-btn">Submit Application</button>
 
-    <p th:if="${error}" th:text="${error}" style="color: red;"></p>
-</form>
+            <p th:if="${error}" class="error-message" th:text="${error}"></p>
+        </form>
 
-<script src="https://hcaptcha.com/1/api.js" async defer></script>
-
-<a th:href="@{/jobs}">← Back to Jobs</a>
+        <a th:href="@{/jobs}" class="back-link">← Back to Job Listings</a>
+    </div>
 </body>
 </html>

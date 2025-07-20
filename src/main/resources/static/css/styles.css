@@ -1,111 +1,342 @@
 body {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f9fafe;
     margin: 0;
     padding: 0;
-    background: #f4f6f8;
+    color: #333;
 }
 
-header nav {
-    background: #2c3e50;
-    padding: 1em;
-    text-align: center;
+.container {
+    max-width: 700px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-header nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 1em;
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
 }
 
-main {
-    padding: 2em;
+h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #3f51b5;
+}
+
+.job-form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.job-form input,
+.job-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.job-form textarea {
+    resize: vertical;
 }
 
 .btn {
-    background-color: #27ae60;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.primary-btn {
+    background-color: #3f51b5;
     color: white;
-    padding: 0.5em 1em;
+}
+
+.primary-btn:hover {
+    background-color: #2c3ea8;
+}
+
+.logout-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+.logout-btn:hover {
+    background-color: #d32f2f;
+}
+
+.success-message {
+    margin-top: 20px;
+    color: green;
+    font-weight: 600;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.dashboard-table th {
+    background-color: #3f51b5;
+    color: white;
+}
+
+.dashboard-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.dashboard-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.action-link {
+    color: #3f51b5;
     text-decoration: none;
-    border-radius: 5px;
+    margin-right: 10px;
+    font-weight: 500;
 }
 
-main {
-    padding: 2rem;
+.danger-btn {
+    background-color: #f44336;
+    color: white;
+    font-size: 13px;
+    padding: 6px 12px;
+    margin-left: 5px;
 }
 
-.search-section {
-    margin-bottom: 2rem;
+.danger-btn:hover {
+    background-color: #d32f2f;
+}
+
+.dashboard-actions {
+    margin-top: 25px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.success-message {
+    color: green;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 25px;
+    color: #3f51b5;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.captcha-box {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.job-title {
+    margin-top: 30px;
+    color: #3f51b5;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.job-applications-group {
+    margin-bottom: 40px;
+}
+
+.center-content {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.success-heading {
+    color: #2e7d32; /* green */
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Layout Utility */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9fafb;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 2rem auto;
     padding: 1rem;
+}
+
+.card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.input {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    width: 100%;
+}
+
+.btn {
+    background-color: #2563eb;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-outline {
+    border: 1px solid #2563eb;
+    background: white;
+    color: #2563eb;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.btn-outline:hover {
+    background-color: #2563eb;
+    color: white;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.mt-2 {
+    margin-top: 0.5rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.mt-6 {
+    margin-top: 1.5rem;
+}
+
+.mb-6 {
+    margin-bottom: 1.5rem;
+}
+
+.grid {
+    display: grid;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.gap-4 {
+    gap: 1rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.pagination a {
+    text-decoration: none;
+}
+
+.job-detail-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
     background: #f9f9f9;
     border-radius: 8px;
 }
 
-.search-form input,
-.search-form select,
-.search-form button {
-    padding: 0.5rem;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
+.job-detail h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
 }
 
-.quick-filters form {
-    display: inline-block;
-    margin: 0.25rem;
+.job-detail p {
+    font-size: 16px;
+    margin: 8px 0;
 }
 
-.quick-filters button {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.9rem;
+.actions {
+    margin-top: 20px;
 }
 
-.jobs-section h2 {
-    margin-bottom: 1rem;
-}
-
-.job-list {
-    list-style: none;
-    padding: 0;
-}
-
-.job-card {
-    background: #ffffff;
-    padding: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    margin-bottom: 1rem;
-}
-
-.view-link {
-    display: inline-block;
-    margin-top: 0.5rem;
-    color: #007bff;
-    text-decoration: none;
-}
-
-.view-link:hover {
-    text-decoration: underline;
-}
-
-.success-msg {
-    color: green;
-    margin-top: 1rem;
-}
-
-.pagination {
-    margin-top: 2rem;
-}
-
-.pagination a {
-    margin: 0 5px;
-    text-decoration: none;
-    padding: 6px 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.pagination a.active {
+.btn-apply {
     background-color: #007bff;
     color: white;
-    border-color: #007bff;
+    padding: 10px 18px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #333;
 }
 

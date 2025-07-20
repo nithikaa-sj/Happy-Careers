@@ -38,7 +38,7 @@ public class AdminController {
     @PostMapping("/postJob")
     public String postJob(@ModelAttribute Job job, Model model) {
     	 if (job.getPostedDate() == null) {
-    	        job.setPostedDate(LocalDate.now());
+     	        job.setPostedDate(LocalDate.now());
     	    }
         jobRepository.save(job);
         model.addAttribute("successMessage", "Job posted successfully!");
@@ -114,6 +114,8 @@ public class AdminController {
         model.addAttribute("jobs", jobsWithApplications);
         return "admin/applications";
     }
+    
+    
 
 
 

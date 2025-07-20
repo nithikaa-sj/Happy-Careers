@@ -19,7 +19,10 @@ public class Application {
     private String email;
     @Column(name = "resume_url")
     private String resumeUrl; 
-    private Long jobId; 
+    private Long jobId;
+    @Column(name = "resume_file_name")
+    private String resumeFileName;
+
     
     @Column(nullable = false, updatable = false,name = "created_at")
     private LocalDateTime createdAt;
@@ -34,6 +37,18 @@ public class Application {
 
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
+	}
+
+
+
+	public String getResumeFileName() {
+		return resumeFileName;
+	}
+
+
+
+	public void setResumeFileName(String resumeFileName) {
+		this.resumeFileName = resumeFileName;
 	}
 
 

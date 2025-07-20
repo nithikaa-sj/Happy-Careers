@@ -6,83 +6,67 @@
 <body>
     <div th:replace="fragments :: navbar"></div>
 
-    <main>
-        <section class="search-section">
-            <form class="search-form" action="/" method="get">
-                <!-- Keyword search -->
-                <input type="text" name="keyword" placeholder="Search job title or description" />
-
-                <!-- Location dropdown -->
-                <select name="location">
+    <main class="container">
+        <section class="card p-4 mb-6">
+            <form class="grid gap-4 md:grid-cols-4 sm:grid-cols-2 search-form" action="/" method="get">
+                <input class="input" type="text" name="keyword" placeholder="Search title or description" />
+                <select class="input" name="location">
                     <option value="">All Locations</option>
                     <option value="Chennai">Chennai</option>
                     <option value="Bangalore">Bangalore</option>
                     <option value="Hyderabad">Hyderabad</option>
                     <option value="Remote">Remote</option>
                 </select>
-
-                <!-- Sort options -->
-                <select name="sortBy">
-                    <option value="">-- Sort By --</option>
+                <select class="input" name="sortBy">
+                    <option value="">Sort By</option>
                     <option value="salaryHigh">Salary: High to Low</option>
                     <option value="salaryLow">Salary: Low to High</option>
-                    <option value="newest">Posted Date: Newest First</option>
-                    <option value="oldest">Posted Date: Oldest First</option>
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
                 </select>
-
-                <button type="submit">Search Jobs</button>
+                <button class="btn" type="submit">Search</button>
             </form>
 
-            <div class="quick-filters">
-                <form method="get" action="/jobs/today">
-                    <button type="submit">Posted Today</button>
-                </form>
-
-                <form method="get" action="/jobs/recent">
-                    <button type="submit">Last 7 Days</button>
-                </form>
-
-                <form method="get" action="/jobs/sort/date/newest">
-                    <button type="submit">Newest First</button>
-                </form>
-
-                <form method="get" action="/jobs/sort/date/oldest">
-                    <button type="submit">Oldest First</button>
-                </form>
+            <div class="flex flex-wrap gap-2 mt-4 justify-center quick-filters">
+                <form method="get" action="/jobs/today"><button class="btn btn-outline" type="submit">Posted Today</button></form>
+                <form method="get" action="/jobs/recent"><button class="btn btn-outline" type="submit">Last 7 Days</button></form>
+                <form method="get" action="/jobs/sort/date/newest"><button class="btn btn-outline" type="submit">Newest First</button></form>
+                <form method="get" action="/jobs/sort/date/oldest"><button class="btn btn-outline" type="submit">Oldest First</button></form>
             </div>
         </section>
 
-        <section class="jobs-section">
-            <h2>Available Job Opportunities</h2>
+        <section class="card p-4">
+            <h2 class="text-xl font-semibold mb-4">Available Job Opportunities</h2>
 
             <div th:if="${jobs.isEmpty()}">
                 <p>No jobs available at the moment.</p>
             </div>
 
-            <ul class="job-list">
-                <li th:each="job : ${jobs}" class="job-card">
-                    <h3 th:text="${job.title}">Job Title</h3>
+            <ul class="grid gap-4">
+                <li th:each="job : ${jobs}" class="card job-card p-4 border border-gray-200">
+                    <h3 class="text-lg font-semibold" th:text="${job.title}">Job Title</h3>
                     <p><strong>Company:</strong> <span th:text="${job.company}"></span></p>
                     <p><strong>Location:</strong> <span th:text="${job.location}"></span></p>
-                    <a class="view-link" th:href="@{/job/{id}(id=${job.id})}">View Details & Apply</a>
+                    <a class="btn mt-2" th:href="@{/job/{id}(id=${job.id})}">View & Apply</a>
                 </li>
             </ul>
 
-            <p th:if="${message}" th:text="${message}" class="success-msg"></p>
+            <p th:if="${message}" th:text="${message}" class="success-msg mt-4 text-green-600 font-semibold"></p>
 
-            <div th:if="${totalPages > 1}" class="pagination">
+            <div th:if="${totalPages > 1}" class="pagination flex justify-center gap-2 mt-6">
                 <div th:if="${currentPage > 0}">
-                    <a th:href="@{/?(page=${currentPage - 1}, keyword=${keyword}, location=${location})}">Previous</a>
+                    <a class="btn btn-outline" th:href="@{/?(page=${currentPage - 1}, keyword=${keyword}, location=${location})}">Previous</a>
                 </div>
 
                 <div th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
-                    <a th:href="@{/?(page=${i}, keyword=${keyword}, location=${location})}"
+                    <a class="btn btn-outline"
+                       th:href="@{/?(page=${i}, keyword=${keyword}, location=${location})}"
                        th:text="${i + 1}"
-                       th:classappend="${i == currentPage} ? 'active' : ''"></a>
+                       th:classappend="${i == currentPage} ? ' active text-white bg-blue-600' : ''"></a>
                 </div>
 
                 <div th:if="${currentPage < totalPages - 1}">
-                    <a th:href="@{/?(page=${currentPage + 1}, keyword=${keyword}, location=${location})}">Next</a>
+                    <a class="btn btn-outline" th:href="@{/?(page=${currentPage + 1}, keyword=${keyword}, location=${location})}">Next</a>
                 </div>
             </div>
         </section>

@@ -4,23 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="${title}">Happy Careers</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
+<!-- Reusable Navigation Bar -->
 <div th:fragment="navbar">
-    <header>
-        <h1><a href="/" style="text-decoration: none;">Happy Careers</a></h1>
-        <hr>
+    <header class="navbar">
+        <div class="container">
+            <h1><a href="/" class="site-title">Happy Careers</a></h1>
+        </div>
     </header>
 </div>
 
+<!-- Reusable Footer -->
 <div th:fragment="footer">
-    <hr>
-    <footer>
-        <p>&copy; 2025 Happy Careers. All rights reserved.</p>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Happy Careers. All rights reserved.</p>
+        </div>
     </footer>
 </div>
 
 </body>
 </html>
+

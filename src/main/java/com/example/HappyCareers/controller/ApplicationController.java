@@ -29,7 +29,7 @@ import com.example.HappyCareers.service.MailService;
 
 @Controller
 public class ApplicationController {
-
+ 
     @Autowired
     private ApplicationRepository applicationRepo;
     
@@ -150,6 +150,8 @@ public class ApplicationController {
             application.setJobId(jobId);
             application.setResumeUrl(savedFile.getAbsolutePath());  // Store file path
             application.setCreatedAt(LocalDateTime.now());
+            application.setResumeFileName(fileName); 
+
             applicationRepo.save(application);
 
             // ✅ Send email to applicant
